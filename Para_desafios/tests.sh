@@ -54,13 +54,15 @@ rm destino.txt
 echo -e $Color_Off cp con argumentos correctos
 echo "1 2 3 4 5 6 "> origen.txt
 echo  cat en origen
-cat origen.txt
-echo cp  origen.txt  destino.txt
 echo -e $Green
+cat origen.txt
+echo  -e $Color_Off cp  origen.txt  destino.txt
 ./cp  origen.txt  destino.txt
 echo  -e $Color_Off cat en destino
+echo -e $Green
 cat  destino.txt
 rm  origen.txt  destino.txt
+echo  -e $Color_Off 
 
 #tiemout
 echo === tiemout TESTS
