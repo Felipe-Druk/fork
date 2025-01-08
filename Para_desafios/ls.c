@@ -3,9 +3,10 @@
 #include <sys/stat.h>
 #include <sys/types.h> 
 #include <string.h>
+#include <stdlib.h>
 
 #define ERROR -1
-#define SUCES 0
+#define SUCCESS 0
 #define ERRORLINK "read link "
 
 const int ARG = 2;
@@ -44,21 +45,19 @@ my_ls(const char* directory_path ){
     {
         stat(entry->d_name, &statbuf);
         if(entry->d_type == DT_LNK){
-		char link[strlen(entry->d_name) + strlen(directory_path) +1];
-		link[0] = '\0';
-		strcat(link, directory_path);
-		strcat(link, "/");
-		strcat(link, entry->d_name);
-		int len = readlink(link, target_path, sizeof(target_path));
-		if (len != ERROR) {
-			print_info_link(entry, &statbuf, target_path);
-            }
-            else
-            {
+            char* link = malloc(strlen(entry->d_name) + strlen(directory_path) +1);
+            strcat(link, directory_path);
+            strcat(link, "/");
+            strcat(link, entry->d_name);
+            int len = readlink(link, target_path, sizeof(target_path));
+	        free(link);
+	    if (len != ERROR) {
+		    print_info_link(entry, &statbuf, target_path);
+	    } else {
 		    printf("link error %s\n" , link);
 		    perror(ERRORLINK);
 	    }
-            print_info(entry, &statbuf);
+	    print_info(entry, &statbuf);
         } else {
             print_info(entry, &statbuf);
         }
@@ -66,7 +65,7 @@ my_ls(const char* directory_path ){
     }
     closedir(dir);
 
-    return SUCES;
+    return SUCCESS;
 }
 
 void print_info(struct dirent *entry, struct stat *statbuf){

@@ -7,7 +7,7 @@
 #include <signal.h>
 
 #define ERROR -1
-#define SUCES 0
+#define SUCCESS 0
 
 const int ARG = 3;
 const int PROS_ARG = 2;
@@ -79,5 +79,5 @@ void pros_dad(pid_t pid_son, int time_wait){
     signal(SIGRTMIN, tieme_handler);
 
     wait(NULL);
-    exit(SUCES);
+    exit(SUCCESS);
 }

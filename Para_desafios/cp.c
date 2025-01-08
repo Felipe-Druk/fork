@@ -10,7 +10,7 @@
 #include <malloc.h>
 
 #define ERROR -1
-#define SUCES 0
+#define SUCCESS 0
 
 const int ARG = 3;
 
@@ -43,7 +43,7 @@ int copy_fd(int fd_src, int fd_dst){
         return errno;
     }
     memcpy(map_dst, map_src, stat_src.st_size);
-    return SUCES;
+    return SUCCESS;
 }
 
 int my_cp(const char* src, const char* dst){

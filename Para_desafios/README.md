@@ -8,7 +8,7 @@ para probar timeout dejo la siguietne linea
 ```
 El proceso deberia tardar 3 segundos y frenar sin llegar a 122 segundos
 
-ademas se probee un Makefile para compilar y un scrip tests
+ademas se provee un Makefile para compilar y un scrip tests
 ```
 bash tests.sh 
 ```
