@@ -42,7 +42,8 @@ main(int argc, char *argv[])
 }
 
 
-void my_find(const char* dir_target, const char * find, int mayus){
+void 
+my_find(const char* dir_target, const char * find, int mayus){
     DIR* dir = opendir(dir_target);
     if (dir == NULL) {
         return;
